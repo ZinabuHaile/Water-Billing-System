@@ -57,8 +57,8 @@ class RoleResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                            ->sortable(),
+                // TextColumn::make('id')
+                //             ->sortable(),
                 TextColumn::make('name')
                             ->sortable(),
                 TextColumn::make('created_at')
