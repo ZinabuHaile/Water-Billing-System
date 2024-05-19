@@ -10,6 +10,7 @@ use Filament\Tables\Table;
 use Filament\Resources\Resource;
 
 use Filament\Forms\Components\Card;
+use Filament\Tables\Actions\Action;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\StaffResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -84,8 +85,10 @@ class StaffResource extends Resource
               
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email')
+                Tables\Columns\TextColumn::make('jobtitle.name')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->searchable(),                    
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -101,6 +104,10 @@ class StaffResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                 Action::make('Download')
+                ->icon('heroicon-o-arrow-down-on-square-stack')
+                ->url(fn(Staff $record)=>route('staff.pdf.download',$record))
+                ->openUrlInNewTab(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
