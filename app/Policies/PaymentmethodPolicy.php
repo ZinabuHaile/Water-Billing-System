@@ -29,7 +29,7 @@ class PaymentmethodPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasRole(['Admin','BillSpecialist']);
+        return $user->hasRole(['Admin']);
     }
 
     /**
@@ -37,7 +37,7 @@ class PaymentmethodPolicy
      */
     public function update(User $user, Paymentmethod $paymentmethod): bool
     {
-         return $user->hasRole(['Admin','BillSpecialist']);
+         return $user->hasRole(['Admin']);
     }
 
     /**

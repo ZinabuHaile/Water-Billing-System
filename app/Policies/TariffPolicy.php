@@ -29,7 +29,7 @@ class TariffPolicy
      */
     public function create(User $user): bool
     {
-         return $user->hasRole(['Admin','BillSpecialist']);
+         return $user->hasRole(['Admin']);
     }
 
     /**
@@ -37,7 +37,7 @@ class TariffPolicy
      */
     public function update(User $user, Tariff $tariff): bool
     {
-         return $user->hasRole(['Admin','BillSpecialist']);
+         return $user->hasRole(['Admin']);
     }
 
     /**

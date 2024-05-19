@@ -13,7 +13,7 @@ class StaffPolicy
      */
     public function viewAny(User $user): bool
     {
-       return $user->hasRole(['Admin','Manager','BillSpecialist']);
+       return $user->hasRole(['Admin','Manager']);
     }
 
     /**
@@ -29,7 +29,7 @@ class StaffPolicy
      */
     public function create(User $user): bool
     {
-       return $user->hasRole('Admin');
+       return $user->hasRole(['Admin','Manager']);
     }
 
     /**
@@ -37,7 +37,7 @@ class StaffPolicy
      */
     public function update(User $user, Staff $staff): bool
     {
-        return $user->hasRole('Admin');
+        return $user->hasRole(['Admin','Manager']);
     }
 
     /**
@@ -45,7 +45,7 @@ class StaffPolicy
      */
     public function delete(User $user, Staff $staff): bool
     {
-       return $user->hasRole('Admin');
+       return $user->hasRole(['Admin','Manager']);
     }
 
     /**
@@ -53,7 +53,7 @@ class StaffPolicy
      */
     public function restore(User $user, Staff $staff): bool
     {
-        //
+         return $user->hasRole(['Admin','Manager']);
     }
 
     /**
@@ -61,6 +61,6 @@ class StaffPolicy
      */
     public function forceDelete(User $user, Staff $staff): bool
     {
-        //
+         return $user->hasRole(['Admin','Manager']);
     }
 }
