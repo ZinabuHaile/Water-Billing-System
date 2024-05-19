@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('tariffs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('metercategory_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('Metercategory_id')->constrained()->cascadeOnDelete();
+            //$table->foreignId('serviceyear_id')->constrained()->cascadeOnDelete();
+            $table->integer('serviceyear_id');
             $table->integer('minrange');
             $table->integer('maxrange');
             $table->decimal('payrate',10,5);
-            $table->string('effectiveyear');
             $table->timestamps();
         });
     }

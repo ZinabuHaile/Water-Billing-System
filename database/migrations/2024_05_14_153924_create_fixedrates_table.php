@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('fixedrates', function (Blueprint $table) {
             $table->id();            
             $table->foreignId('metercategory_id')->constrained()->cascadeOnDelete();
+            // $table->foreignId('serviceyear_id')->constrained()->cascadeOnDelete();
+            $table->integer('serviceyear_id');
             $table->decimal('chargeamount',10,2);
-            $table->string('description');
-            $table->string('effectiveyear');
+            $table->String('description');
             $table->timestamps();
         });
     }

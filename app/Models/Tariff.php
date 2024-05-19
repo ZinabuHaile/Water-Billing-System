@@ -11,10 +11,15 @@ class Tariff extends Model
 
     protected $fillable = [
         'metercategory_id',
+        'serviceyear_id',
         'minrange',
         'maxrange',
         'payrate',
-        'effectiveyear'        
+               
     ];
+
+    public function serviceyr(){
+        return $this->belongsTo(Serviceyear::class);
+    } 
 }
 

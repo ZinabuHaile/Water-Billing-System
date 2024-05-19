@@ -29,18 +29,28 @@ class FixedrateResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('metercategory_id')
-                    ->required()
-                    ->numeric(),
+                // Forms\Components\TextInput::make('metercategory_id')
+                //     ->required()
+                //     ->numeric(),
+                Forms\Components\Select::make('metercategory_id')
+                        ->relationship(name:'metcategory',titleAttribute:'name')
+                        ->searchable()
+                        ->preload()
+                        ->required(),                     
                 Forms\Components\TextInput::make('chargeamount')
                     ->required()
                     ->numeric(),
                 Forms\Components\TextInput::make('description')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('effectiveyear')
-                    ->required()
-                    ->maxLength(255),
+                // Forms\Components\TextInput::make('effectiveyear')
+                //     ->required()
+                //     ->maxLength(255),
+                Forms\Components\Select::make('serviceyear_id')
+                        ->relationship(name:'serviceyr',titleAttribute:'servyear')
+                        ->searchable()
+                        ->preload()
+                        ->required(),                   
             ]);
     }
 
@@ -56,7 +66,7 @@ class FixedrateResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('description')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('effectiveyear')
+                Tables\Columns\TextColumn::make('serviceyr.servyear')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

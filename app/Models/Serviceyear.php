@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Serviceyear extends Model
 {
     use HasFactory;
-     protected $fillable = [
-        'serviceyear'      
+    protected $fillable=[
+        'serviceyr',
     ];
 }
